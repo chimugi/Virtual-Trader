@@ -1,0 +1,42 @@
+<div class="virtual-trader-table-container">
+  <mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- code Column -->
+    <ng-container matColumnDef="code">
+      <mat-header-cell *matHeaderCellDef> code </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.code}} </mat-cell>
+    </ng-container>
+
+    <!-- companyName Column -->
+    <ng-container matColumnDef="companyName">
+      <mat-header-cell *matHeaderCellDef> companyName </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.companyName}} </mat-cell>
+    </ng-container>
+
+    <!-- exchange Column -->
+    <ng-container matColumnDef="exchange">
+      <mat-header-cell *matHeaderCellDef> exchange </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.exchange}} </mat-cell>
+    </ng-container>
+
+    <!-- startDate Column -->
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef> startDate </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.startDate}} </mat-cell>
+    </ng-container>
+
+    <!-- endDate Column -->
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef> endDate </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.endDate}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

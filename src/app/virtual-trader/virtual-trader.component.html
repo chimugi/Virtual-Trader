@@ -1,1 +1,14 @@
-<p>virtual-trader works!</p>
+<h1> Inputs </h1>
+<app-virtual-trader-form [(code)]="code" />
+
+<h1> Table </h1>
+@if (stockData$() | async; as data) {
+  <app-virtual-trader-table [dataSource]="[data]" />
+} @else {
+  Invalid Input.
+}
+
+@if (stockAllData$() | async; as data) {
+  <app-virtual-trader-table [dataSource]="data" />
+}
+
