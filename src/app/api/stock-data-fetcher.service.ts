@@ -6,7 +6,9 @@ import { StockTicker } from '../virtual-trader/contract';
 })
 export class StockDataFetcherService {
 	// Note: sample code
-	public getStockData(code: StockTicker['code']): Promise<StockTicker | undefined> {
+	public getStockData(
+		code: StockTicker['code'],
+	): Promise<StockTicker | undefined> {
 		return this.getAllStockData()
 			.then(samples => samples?.find(samp => samp.code === code));
 	}

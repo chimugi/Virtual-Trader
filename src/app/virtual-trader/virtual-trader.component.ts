@@ -15,9 +15,11 @@ export class VirtualTraderComponent {
 	public fetcher = inject(StockDataFetcherService);
 	// TODO: Need to be modified because the async method calls repeatedly.
 	public stockData$ = computed(() => this.fetchStockData(this.code()));
-  public stockAllData$ = signal(this.fetcher.getAllStockData());
+	public stockAllData$ = signal(this.fetcher.getAllStockData());
 
-	private async fetchStockData(code: StockTicker['code']): Promise<StockTicker | undefined> {
+	private async fetchStockData(
+		code: StockTicker['code'],
+	): Promise<StockTicker | undefined> {
 		return await this.fetcher.getStockData(code);
 	}
 }

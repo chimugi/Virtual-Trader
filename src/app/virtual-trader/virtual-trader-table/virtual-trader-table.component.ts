@@ -18,7 +18,14 @@ type StockTickerTableData = {
 	styleUrl: './virtual-trader-table.component.scss',
 })
 export class VirtualTraderTableComponent {
-	public displayedColumns: string[] = ['position', 'code', 'companyName', 'exchange', 'startDate', 'endDate'];
+	public displayedColumns: string[] = [
+		'position',
+		'code',
+		'companyName',
+		'exchange',
+		'startDate',
+		'endDate',
+	];
 
 	public readonly dataSource = input.required({
 		transform: (stocks: StockTicker[]) => this.flattenStockTicker(stocks),

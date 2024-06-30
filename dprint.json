@@ -1,7 +1,8 @@
 {
   "typescript": {
     "useTabs": true,
-    "quoteStyle": "preferSingle"
+    "quoteStyle": "preferSingle",
+    "lineWidth": 80
   },
   "json": {
   },
