@@ -1,8 +1,7 @@
 {
-  "indentWidth": 2,
-  "useTabs": true,
-  "quoteStyle": "preferSingle",
   "typescript": {
+    "useTabs": true,
+    "quoteStyle": "preferSingle"
   },
   "json": {
   },
