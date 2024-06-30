@@ -25,45 +25,35 @@ const SAMPLES: StockTicker[] = [
 		code: 'AAPL',
 		companyName: 'Apple Inc.',
 		exchange: 'NASDAQ',
-		term: {
-			startDate: new Date('2023-01-01'),
-			endDate: new Date('2023-12-31'),
-		},
+		startDate: new Date('2023-01-01'),
+		endDate: new Date('2023-12-31'),
 	},
 	{
 		code: 'GOOGL',
 		companyName: 'Alphabet Inc.',
 		exchange: 'NASDAQ',
-		term: {
-			startDate: new Date('2023-01-01'),
-			endDate: new Date('2023-12-31'),
-		},
+		startDate: new Date('2023-01-01'),
+		endDate: new Date('2023-12-31'),
 	},
 	{
 		code: 'MSFT',
 		companyName: 'Microsoft Corporation',
 		exchange: 'NASDAQ',
-		term: {
-			startDate: new Date('2023-01-01'),
-			endDate: new Date('2023-12-31'),
-		},
+		startDate: new Date('2023-01-01'),
+		endDate: new Date('2023-12-31'),
 	},
 	{
 		code: 'AMZN',
 		companyName: 'Amazon.com, Inc.',
 		exchange: 'NASDAQ',
-		term: {
-			startDate: new Date('2023-01-01'),
-			endDate: new Date('2023-12-31'),
-		},
+		startDate: new Date('2023-01-01'),
+		endDate: new Date('2023-12-31'),
 	},
 	{
 		code: 'FB',
 		companyName: 'Meta Platforms, Inc.',
 		exchange: 'NASDAQ',
-		term: {
-			startDate: new Date('2023-01-01'),
-			endDate: new Date('2023-12-31'),
-		},
+		startDate: new Date('2023-01-01'),
+		endDate: new Date('2023-12-31'),
 	},
 ];

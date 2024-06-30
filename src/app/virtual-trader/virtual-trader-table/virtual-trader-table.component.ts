@@ -35,8 +35,6 @@ export class VirtualTraderTableComponent {
 		return stocks.map((stock, i) => ({
 			...stock,
 			position: i + 1,
-			startDate: stock.term?.startDate,
-			endDate: stock.term?.endDate,
 		}));
 	}
 }

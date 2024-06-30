@@ -1,5 +1,6 @@
 import { Component, model } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { StockTicker } from '../contract';
@@ -7,7 +8,12 @@ import { StockTicker } from '../contract';
 @Component({
 	selector: 'app-virtual-trader-form',
 	standalone: true,
-	imports: [MatInputModule, MatFormFieldModule, FormsModule],
+	imports: [
+		MatInputModule,
+		MatFormFieldModule,
+		MatDatepickerModule,
+		FormsModule,
+	],
 	templateUrl: './virtual-trader-form.component.html',
 	styleUrl: './virtual-trader-form.component.scss',
 })
