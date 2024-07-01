@@ -12,6 +12,6 @@ export interface StockTicker {
 	code: string;
 	companyName?: string;
 	exchange?: string;
-	startDate?: Date;
-	endDate?: Date;
+	startDate: Date;
+	endDate: Date;
 }

@@ -1,10 +1,20 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
 import { StockTicker } from '../virtual-trader/contract';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class StockDataFetcherService {
+	private baseUrl = 'http://localhost:3000';
+	private http = inject(HttpClient);
+
+	public getHistoricalData(code: string, startDate: string, endDate: string) {
+		const url =
+			`${this.baseUrl}/historical/get/${code}?period1=${startDate}&period2=${endDate}`;
+		return this.http.get(url);
+	}
+
 	// Note: sample code
 	public getStockData(
 		code: StockTicker['code'],

@@ -1,5 +1,17 @@
 <h1> Inputs </h1>
-<app-virtual-trader-form [(code)]="code" />
+<app-virtual-trader-form [(code)]="code"
+                         [(startDate)]="startDate"
+                         [(endDate)]="endDate"/>
+
+<button mat-button [disabled]="disabled()"
+                   (click)="fetchHistoricalData()"> Click </button>
+
+@if (historicalData$ | async; as data) {
+  {{ historicalData$ }}
+} @else {
+  No history.
+}
+
 
 <h1> Table </h1>
 @if (stockData$() | async; as data) {
@@ -11,4 +23,3 @@
 @if (stockAllData$() | async; as data) {
   <app-virtual-trader-table [dataSource]="data" />
 }
-
