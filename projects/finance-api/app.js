@@ -1,8 +1,10 @@
+import cors from 'cors';
 import express from 'express';
 import * as historical from './modules/historical.js';
 import * as quate from './modules/quate.js';
 
 const app = express();
+app.use(cors());
 
 const port = 3000;
 const server = app.listen(port, () => {
