@@ -1,21 +1,15 @@
 <h1> Inputs </h1>
-<app-virtual-trader-form [(startDate)]="startDate"
-                         [(endDate)]="endDate"
-                         (addCode)="addCode($event)"/>
+<app-virtual-trader-form [(codes)]="codes"
+                         [(startDate)]="startDate"
+                         [(endDate)]="endDate"/>
 
-<div>
-  Targets:
-  @for (ac of appliedCodes(); track ac) {
-    {{ ac }}
-  }
-</div>
-
-
-<button mat-button [disabled]="disabled()"
+<button mat-button [disabled]="codes().length === 0"
                    (click)="fetchHistoricalData()"> Apply </button>
 
 <h1> Line Chart </h1>
 @if (historicalData$ | async; as data) {
   <app-virtual-trader-graph [dataSource]="data"></app-virtual-trader-graph>
+} @else {
+  Please enter the company code, select the target period, and then press the Apply button.
 }
 

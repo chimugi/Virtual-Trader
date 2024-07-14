@@ -1,15 +1,30 @@
 <div class="virtual-trader-form-container">
-  <mat-form-field>
-    <mat-label> Code </mat-label>
-    <input matInput type="text" [(ngModel)]="code">
-    <button mat-icon-button
-            matSuffix
-            [disabled]="code.length === 0"
-            (click)="addCode.emit(code)">
-      <mat-icon>{{'add'}}</mat-icon>
-    </button>
+  <mat-form-field class="virtual-trader-form-chip-grid">
+    <mat-label> Codes </mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter Codes">
+      @for (code of codes(); track code) {
+        <mat-chip-row
+          (removed)="remove(code)"
+          [editable]="true"
+          (edited)="edit(code, $event)"
+        >
+          {{code}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+      <input
+        placeholder="New code..."
+        [matChipInputFor]="chipGrid"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        [matChipInputAddOnBlur]="addOnBlur"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-grid>
   </mat-form-field>
 
+  <br>
   <mat-form-field>
     <mat-label> Enter a date range </mat-label>
     <mat-date-range-input [rangePicker]="picker">

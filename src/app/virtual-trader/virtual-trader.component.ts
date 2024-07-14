@@ -19,28 +19,19 @@ import {
 export class VirtualTraderComponent {
 	public fetcher = inject(StockDataFetcherService);
 
+	public codes = signal<StockTicker['code'][]>([]);
+
 	private today = new Date();
 	public startDate = signal<StockTicker['startDate']>(this.today);
 	public endDate = signal<StockTicker['endDate']>(this.today);
 
 	public historicalData$?: Observable<HistoricalData[][]>;
-	public appliedCodes = signal<StockTicker['code'][]>([
-		'AMZN',
-		'AAPL',
-		'GOOGL',
-	]);
-
-	public disabled = computed(() => this.appliedCodes().length === 0);
 
 	public fetchHistoricalData(): void {
 		this.historicalData$ = this.fetcher.getHistoricalData(
-			this.appliedCodes(),
+			this.codes(),
 			this.startDate(),
 			this.endDate(),
 		);
-	}
-
-	public addCode(code: StockTicker['code']): void {
-		this.appliedCodes().push(code);
 	}
 }
