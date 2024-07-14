@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { StockDataFetcherService } from './stock-data-fetcher.service';
 
 describe('StockDataFetcherService', () => {
