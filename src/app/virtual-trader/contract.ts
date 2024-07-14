@@ -15,3 +15,11 @@ export interface StockTicker {
 	startDate: Date;
 	endDate: Date;
 }
+
+export interface HistoricalData {
+	// Define the structure of your historical data here
+	date: string; // Example, adjust according to your API response
+	close: number; // Example
+	code: string;
+	// Add other properties as needed
+}

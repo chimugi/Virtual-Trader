@@ -2,16 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { HistoricalData } from '../contract';
 
-function updateChartOptions(dataSource: any[]) {
-	const codes = dataSource.map(ds => ds.map((d: any) => d.code)[0]);
-	const data = dataSource.map((ds, idx) => ({
+function updateChartOptions(dataList: HistoricalData[][]) {
+	const codes = dataList.map(histories => histories.map(hist => hist.code)[0]);
+	const data = dataList.map((histories, idx) => ({
 		type: 'spline',
 		showInLegend: true,
 		name: codes[idx],
-		dataPoints: ds.map((d: any) => ({
-			x: new Date(d.date),
-			y: d.close,
+		dataPoints: histories.map(hist => ({
+			x: new Date(hist.date),
+			y: hist.close,
 		})),
 	}));
 	return {
@@ -57,7 +58,7 @@ function updateChartOptions(dataSource: any[]) {
 export class VirtualTraderGraphComponent {
 	@Input({
 		required: true,
-		transform: (obj: any[]) => updateChartOptions(obj),
+		transform: (dataList: HistoricalData[][]) => updateChartOptions(dataList),
 	})
-	public dataSource!: any;
+	public dataSource!: HistoricalData[][];
 }

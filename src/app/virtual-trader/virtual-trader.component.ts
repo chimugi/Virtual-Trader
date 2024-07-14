@@ -3,7 +3,11 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
 import { StockDataFetcherService } from '../api/stock-data-fetcher.service';
-import { StockTicker, VIRTUAL_TRADER_COMPONENTS } from './contract';
+import {
+	HistoricalData,
+	StockTicker,
+	VIRTUAL_TRADER_COMPONENTS,
+} from './contract';
 
 @Component({
 	selector: 'app-virtual-trader',
@@ -20,7 +24,7 @@ export class VirtualTraderComponent {
 	public startDate = signal<StockTicker['startDate']>(this.today);
 	public endDate = signal<StockTicker['endDate']>(this.today);
 
-	public historicalData$?: Observable<Object[]>;
+	public historicalData$?: Observable<HistoricalData[][]>;
 	public appliedCodes: StockTicker['code'][] = ['AMZN', 'AAPL', 'GOOGL'];
 
 	public disabled = computed(() => this.code() === '');
