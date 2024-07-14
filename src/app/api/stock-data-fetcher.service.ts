@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { forkJoin, map } from 'rxjs';
 import { transDateForFinalcialApi } from '../utils/utils';
 import { StockTicker } from '../virtual-trader/contract';
 
@@ -10,11 +11,18 @@ export class StockDataFetcherService {
 	private baseUrl = 'http://localhost:3000';
 	private http = inject(HttpClient);
 
-	public getHistoricalData(code: string, startDate: Date, endDate: Date) {
-		const url = `${this.baseUrl}/historical/get/${code}?period1=${
-			transDateForFinalcialApi(startDate)
-		}&period2=${transDateForFinalcialApi(endDate)}`;
-		return this.http.get(url);
+	public getHistoricalData(codes: string[], startDate: Date, endDate: Date) {
+		const requests = codes.map((code, index) => {
+			const url = `${this.baseUrl}/historical/get/${code}?period1=${
+				transDateForFinalcialApi(startDate)
+			}&period2=${transDateForFinalcialApi(endDate)}`;
+			return this.http.get(url).pipe(
+				map((data) =>
+					(data as any).map((d: any) => ({ ...d, code: codes[index] }))
+				),
+			);
+		});
+		return forkJoin(requests);
 	}
 
 	// Note: sample code

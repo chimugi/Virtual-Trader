@@ -1,10 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { start } from 'repl';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { StockDataFetcherService } from '../api/stock-data-fetcher.service';
-import { transDateForFinalcialApi } from '../utils/utils';
 import { StockTicker, VIRTUAL_TRADER_COMPONENTS } from './contract';
 
 @Component({
@@ -22,16 +20,21 @@ export class VirtualTraderComponent {
 	public startDate = signal<StockTicker['startDate']>(this.today);
 	public endDate = signal<StockTicker['endDate']>(this.today);
 
-	public historicalData$?: Observable<Object>;
+	public historicalData$?: Observable<Object[]>;
+	public appliedCodes: StockTicker['code'][] = ['AMZN', 'AAPL', 'GOOGL'];
 
 	public disabled = computed(() => this.code() === '');
 
 	public fetchHistoricalData(): void {
 		this.historicalData$ = this.fetcher.getHistoricalData(
-			this.code(),
+			this.appliedCodes,
 			this.startDate(),
 			this.endDate(),
 		);
+	}
+
+	public addCode(): void {
+		this.appliedCodes.push(this.code());
 	}
 
 	// TODO: Need to be modified because the async method calls repeatedly.

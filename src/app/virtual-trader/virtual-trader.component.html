@@ -3,8 +3,17 @@
                          [(startDate)]="startDate"
                          [(endDate)]="endDate"/>
 
+<button mat-button (click)="addCode()"> Add Code </button>
+<div>
+  Targets: 
+  @for (ac of appliedCodes; track ac) {
+    {{ ac }}
+  }
+</div>
+
+
 <button mat-button [disabled]="disabled()"
-                   (click)="fetchHistoricalData()"> Click </button>
+                   (click)="fetchHistoricalData()"> Apply </button>
 
 <h1> Line Chart </h1>
 @if (historicalData$ | async; as data) {
