@@ -1,12 +1,11 @@
 <h1> Inputs </h1>
-<app-virtual-trader-form [(code)]="code"
-                         [(startDate)]="startDate"
-                         [(endDate)]="endDate"/>
+<app-virtual-trader-form [(startDate)]="startDate"
+                         [(endDate)]="endDate"
+                         (addCode)="addCode($event)"/>
 
-<button mat-button (click)="addCode()"> Add Code </button>
 <div>
-  Targets: 
-  @for (ac of appliedCodes; track ac) {
+  Targets:
+  @for (ac of appliedCodes(); track ac) {
     {{ ac }}
   }
 </div>
@@ -20,13 +19,3 @@
   <app-virtual-trader-graph [dataSource]="data"></app-virtual-trader-graph>
 }
 
-<h1> Table </h1>
-@if (stockData$() | async; as data) {
-  <app-virtual-trader-table [dataSource]="[data]" />
-} @else {
-  Invalid Input.
-}
-
-@if (stockAllData$() | async; as data) {
-  <app-virtual-trader-table [dataSource]="data" />
-}

@@ -16,11 +16,8 @@ function updateChartOptions(dataList: HistoricalData[][]) {
 	}));
 	return {
 		animationEnabled: true,
-		axisX: {
-			title: 'Date',
-		},
 		axisY: {
-			title: 'Stock Price',
+			title: 'Stock Price [$]',
 		},
 		toolTip: {
 			shared: true,

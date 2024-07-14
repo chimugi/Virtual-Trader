@@ -1,8 +1,10 @@
-import { Component, model } from '@angular/core';
+import { Component, model, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { StockTicker } from '../contract';
 
@@ -11,16 +13,20 @@ import { StockTicker } from '../contract';
 	standalone: true,
 	providers: [provideNativeDateAdapter()],
 	imports: [
-		MatInputModule,
-		MatFormFieldModule,
+		MatButtonModule,
 		MatDatepickerModule,
+		MatFormFieldModule,
+		MatIconModule,
+		MatInputModule,
 		FormsModule,
 	],
 	templateUrl: './virtual-trader-form.component.html',
 	styleUrl: './virtual-trader-form.component.scss',
 })
 export class VirtualTraderFormComponent {
-	public code = model<StockTicker['code']>('');
+	public code: StockTicker['code'] = '';
 	public startDate = model<StockTicker['startDate']>();
 	public endDate = model<StockTicker['endDate']>();
+
+	public addCode = output<StockTicker['code']>();
 }
