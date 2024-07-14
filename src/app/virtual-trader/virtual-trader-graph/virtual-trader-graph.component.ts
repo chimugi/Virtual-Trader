@@ -5,11 +5,10 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { HistoricalData } from '../contract';
 
 function updateChartOptions(dataList: HistoricalData[][]) {
-	const codes = dataList.map(histories => histories.map(hist => hist.code)[0]);
 	const data = dataList.map((histories, idx) => ({
 		type: 'spline',
 		showInLegend: true,
-		name: codes[idx],
+		name: histories.map(hist => hist.code)[idx],
 		dataPoints: histories.map(hist => ({
 			x: new Date(hist.date),
 			y: hist.close,
