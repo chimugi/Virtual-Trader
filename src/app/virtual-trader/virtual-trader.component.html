@@ -6,15 +6,10 @@
 <button mat-button [disabled]="disabled()"
                    (click)="fetchHistoricalData()"> Click </button>
 
-@if (historicalData$ | async; as data) {
-  {{ historicalData$ }}
-} @else {
-  No history.
-}
-
 <h1> Line Chart </h1>
-<app-virtual-trader-graph></app-virtual-trader-graph>
-
+@if (historicalData$ | async; as data) {
+  <app-virtual-trader-graph [dataSource]="data"></app-virtual-trader-graph>
+}
 
 <h1> Table </h1>
 @if (stockData$() | async; as data) {

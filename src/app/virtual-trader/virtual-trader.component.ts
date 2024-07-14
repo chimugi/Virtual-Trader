@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { start } from 'repl';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { StockDataFetcherService } from '../api/stock-data-fetcher.service';
 import { transDateForFinalcialApi } from '../utils/utils';
 import { StockTicker, VIRTUAL_TRADER_COMPONENTS } from './contract';
