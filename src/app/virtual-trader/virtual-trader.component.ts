@@ -20,13 +20,7 @@ export class VirtualTraderComponent {
 	public code = signal<StockTicker['code']>('');
 	private today = new Date();
 	public startDate = signal<StockTicker['startDate']>(this.today);
-	public startDateString = computed(() =>
-		transDateForFinalcialApi(this.startDate())
-	);
 	public endDate = signal<StockTicker['endDate']>(this.today);
-	public endDateString = computed(() =>
-		transDateForFinalcialApi(this.endDate())
-	);
 
 	public historicalData$?: Observable<Object>;
 
@@ -35,8 +29,8 @@ export class VirtualTraderComponent {
 	public fetchHistoricalData(): void {
 		this.historicalData$ = this.fetcher.getHistoricalData(
 			this.code(),
-			this.startDateString(),
-			this.endDateString(),
+			this.startDate(),
+			this.endDate(),
 		);
 	}
 
