@@ -4,9 +4,10 @@ import { RouterOutlet } from '@angular/router';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 
 function updateChartOptions(dataSource: any[]) {
-	const codes = dataSource.map(ds => ds.map((d: any) => d.code));
+	const codes = dataSource.map(ds => ds.map((d: any) => d.code)[0]);
 	const data = dataSource.map((ds, idx) => ({
 		type: 'spline',
+		showInLegend: true,
 		name: codes[idx],
 		dataPoints: ds.map((d: any) => ({
 			x: new Date(d.date),
@@ -15,15 +16,32 @@ function updateChartOptions(dataSource: any[]) {
 	}));
 	return {
 		animationEnabled: true,
-		exportEnabled: true,
+		axisX: {
+			title: 'Date',
+		},
+		axisY: {
+			title: 'Stock Price',
+		},
+		toolTip: {
+			shared: true,
+		},
+		legend: {
+			cursor: 'pointer',
+			itemclick: function(e: any) {
+				if (
+					typeof (e.dataSeries.visible) === 'undefined' || e.dataSeries.visible
+				) {
+					e.dataSeries.visible = false;
+				} else {
+					e.dataSeries.visible = true;
+				}
+				e.chart.render();
+			},
+		},
 		title: {
 			text: 'Stock Line Chart',
 			fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
 			fontWeight: 'bold',
-		},
-		axisY: {
-			title: 'Stock Price',
-			valueFormatString: '#,###.##',
 		},
 		data,
 	};
