@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { forkJoin, map, Observable } from 'rxjs';
-import { transDateForFinalcialApi } from '../utils/utils';
-import { HistoricalData, StockTicker } from '../virtual-trader/contract';
+import { transDateForFinalcialApi } from './utils';
+import { HistoricalData, StockTicker } from '../../virtual-trader/contract';
 
 @Injectable({
 	providedIn: 'root',

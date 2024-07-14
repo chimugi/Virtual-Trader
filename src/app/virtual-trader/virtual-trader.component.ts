@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Observable } from 'rxjs';
-import { StockDataFetcherService } from '../api/stock-data-fetcher.service';
+import { StockDataFetcherService } from '../api/stock-data-fetcher/stock-data-fetcher.service';
 import {
 	HistoricalData,
 	StockTicker,
