@@ -59,5 +59,5 @@ export class VirtualTraderGraphComponent {
 		required: true,
 		transform: (dataList: HistoricalData[][]) => updateChartOptions(dataList),
 	})
-	public dataSource!: HistoricalData[][];
+	public dataSource!: any[];
 }
